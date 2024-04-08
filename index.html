@@ -1,8 +1,8 @@
-<canvas id="cv" width="500", height="500"></canvas><script>let snakePieces = [{x: 0, y:0}], velocity = {x:0, y:1}, fruit = {x: 4, y: 3};
+<canvas id="cv"width="500"height="500"></canvas><script>let snakePieces = [{x:0, y:0}], velocity = {x:0, y:1}, fruit = {x:4, y:3};
 document.addEventListener("keydown", (e) => velocity = {x: e.keyCode === 37 ? -1 : e.keyCode === 39 ? 1 : 0, y: e.keyCode === 38 ? -1 : e.keyCode === 40 ? 1 : 0});
 setInterval(() => { document.getElementById("cv").getContext("2d").fillStyle = "#5e785d";
 document.getElementById("cv").getContext("2d").fillRect(0, 0, document.getElementById("cv").width, document.getElementById("cv").height);
-for (let i = 0; i < snakePieces.length + 1; i++) document.getElementById("cv").getContext("2d").strokeRect((i === snakePieces.length ? fruit.x : snakePieces[i].x) * 25, (i === snakePieces.length ? fruit.y : snakePieces[i].y) * 25, 25, 25)
-snakePieces[snakePieces.length - 1] = {x:snakePieces[0].x + velocity.x, y: snakePieces[0].y + velocity.y};
+for (let i = 0; i < snakePieces.length + 1; i++) document.getElementById("cv").getContext("2d").strokeRect((i === snakePieces.length ? fruit.x : snakePieces[i].x)*25, (i === snakePieces.length ? fruit.y : snakePieces[i].y)*25, 25, 25);
+snakePieces[snakePieces.length - 1] = {x:snakePieces[0].x+velocity.x, y: snakePieces[0].y+velocity.y};
 snakePieces.unshift(snakePieces.pop());
-snakePieces = snakePieces[0].x == fruit.x && snakePieces[0].y == fruit.y ? (snakePieces.push({x: snakePieces[0].x, y: snakePieces[0].y}), fruit = {x: Math.floor(Math.random() * 20), y: Math.floor(Math.random() * 20)}, snakePieces) : snakePieces[0].x < 0 || snakePieces[0].x > 20 - 1 || snakePieces[0].y < 0 || snakePieces[0].y > 20 - 1 || snakePieces.slice(1).some(piece => piece.x === snakePieces[0].x && piece.y === snakePieces[0].y) ? [{x: 0, y: 0}] : snakePieces; }, 1000 / 5); </script>
+snakePieces = snakePieces[0].x == fruit.x && snakePieces[0].y == fruit.y ? (snakePieces.push({x: snakePieces[0].x, y: snakePieces[0].y}), fruit = {x: Math.floor(Math.random()*20), y: Math.floor(Math.random()*20)}, snakePieces) : snakePieces[0].x < 0 || snakePieces[0].x > 19 || snakePieces[0].y < 0 || snakePieces[0].y > 19 || snakePieces.slice(1).some(piece => piece.x === snakePieces[0].x && piece.y === snakePieces[0].y) ? [{x:0, y:0}] : snakePieces; }, 200); </script>
